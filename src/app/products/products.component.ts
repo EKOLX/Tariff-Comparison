@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductViewModel } from "../viewModels/productView.model";
 import { ProductService } from "../services/product.service";
-import { calculateCosts } from "../lib/logic";
+import { calculateAnnualCosts } from "../lib/logic";
 
 @Component({
   selector: "app-products",
@@ -9,6 +9,7 @@ import { calculateCosts } from "../lib/logic";
   styleUrls: ["./products.component.scss"]
 })
 export class ProductsComponent implements OnInit {
+  consumption: number = 4500; // TODO: test
   productCollection: Array<ProductViewModel> = [];
 
   constructor(private productService: ProductService) {}
@@ -18,13 +19,10 @@ export class ProductsComponent implements OnInit {
   }
 
   private loadProducts(): void {
-    this.productService.getProductsAndCalculation().subscribe(
-      result => {
-        for (let product of result[0]) {
-          const calculation = result[1].find(
-            c => c.id === product.calculationId
-          );
-          const annualCosts = calculateCosts(product, calculation);
+    this.productService.getProducts().subscribe(
+      products => {
+        for (let product of products) {
+          const annualCosts = calculateAnnualCosts(this.consumption, product);
           const productModel = new ProductViewModel(product.name, annualCosts);
 
           this.productCollection.push(productModel);

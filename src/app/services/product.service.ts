@@ -28,11 +28,4 @@ export class ProductService {
       this.httpOptions
     );
   }
-
-  getProductsAndCalculation(): Observable<[Product[], Calculation[]]> {
-    const products = this.getProducts();
-    const calculation = this.getCalculation();
-
-    return forkJoin(products, calculation);
-  }
 }
