@@ -1,2 +1,5 @@
-<app-products></app-products>
-<app-comparison></app-comparison>
+<label for="consumption">Consumption:</label>
+<input type="number" name="consumption" [(ngModel)]="consumption" />
+<span>(kWh/year)</span>
+
+<app-products [consumption]="consumption"></app-products>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { ProductViewModel } from "../viewModels/productView.model";
 import { ProductService } from "../services/product.service";
 import { calculateAnnualCosts } from "../lib/logic";
@@ -8,25 +8,32 @@ import { calculateAnnualCosts } from "../lib/logic";
   templateUrl: "./products.component.html",
   styleUrls: ["./products.component.scss"]
 })
-export class ProductsComponent implements OnInit {
-  consumption: number = 4500; // TODO: test
+export class ProductsComponent implements OnChanges {
+  @Input() consumption: number;
+
   productCollection: Array<ProductViewModel> = [];
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
     this.loadProducts();
   }
 
   private loadProducts(): void {
     this.productService.getProducts().subscribe(
       products => {
+        this.productCollection = [];
+
         for (let product of products) {
           const annualCosts = calculateAnnualCosts(this.consumption, product);
           const productModel = new ProductViewModel(product.name, annualCosts);
 
           this.productCollection.push(productModel);
         }
+
+        this.productCollection.sort((a, b) =>
+          a.annualCosts > b.annualCosts ? 1 : -1
+        );
       },
       error => console.log(error)
     );

@@ -5,6 +5,6 @@
   </li>
   <li *ngFor="let product of productCollection">
     <span>{{ product.name }}</span>
-    <span>{{ product.annualCosts }}</span>
+    <span>{{ product.annualCosts | number: "1.2" }}</span>
   </li>
 </ul>
