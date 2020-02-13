@@ -1,0 +1,10 @@
+<ul>
+  <li>
+    <span>Tariff name</span>
+    <span>Annual costs (€/year)</span>
+  </li>
+  <li *ngFor="let product of productCollection">
+    <span>{{ product.name }}</span>
+    <span>{{ product.annualCosts }}</span>
+  </li>
+</ul>

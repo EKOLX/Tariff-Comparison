@@ -5,17 +5,17 @@
       "name": "basic electricity tariff",
       "baseCost": 5,
       "consumptionCost": 0.22,
-      "calculationModel": 1
+      "calculationId": 1
     },
     {
       "id": 2,
       "name": "Packaged tariff",
       "baseCost": 800,
       "consumptionCost": 0.3,
-      "calculationModel": 2
+      "calculationId": 2
     }
   ],
-  "calculationModels": [
+  "calculation": [
     { "id": 1, "name": "Per month" },
     { "id": 2, "name": "Per year" }
   ]
