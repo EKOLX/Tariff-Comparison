@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "basic electricity tariff",
+      "baseCost": 5,
+      "consumptionCost": 0.22,
+      "calculationModel": 1
+    },
+    {
+      "id": 2,
+      "name": "Packaged tariff",
+      "baseCost": 800,
+      "consumptionCost": 0.3,
+      "calculationModel": 2
+    }
+  ],
+  "calculationModels": [
+    { "id": 1, "name": "Per month" },
+    { "id": 2, "name": "Per year" }
+  ]
+}
