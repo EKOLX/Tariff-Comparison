@@ -2,7 +2,8 @@ import { Product } from "../models/product.model";
 import { CalculationType } from "../models/calculation.model";
 
 export const calculateAnnualCosts = (consumption: number, product: Product) => {
-  if (consumption === undefined || consumption == null) return null;
+  if (consumption === undefined || consumption == null || consumption <= 0)
+    return null;
 
   const year = 12; // months
   const consumptionLimit = 4000; // kWh/year
