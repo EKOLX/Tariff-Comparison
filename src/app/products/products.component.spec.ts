@@ -25,19 +25,20 @@ describe("ProductsComponent", () => {
   });
 
   it("should hide ul element if consumption is null or undefined or <= 0", () => {
-    expect(fixture.debugElement.query(By.css("ul"))).toBeNull();
+    const ulElement = fixture.debugElement.query(By.css("ul"));
+    expect(ulElement).toBeNull();
 
     component.consumption = undefined;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css("ul"))).toBeNull();
+    expect(ulElement).toBeNull();
 
     component.consumption = 0;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css("ul"))).toBeNull();
+    expect(ulElement).toBeNull();
 
     component.consumption = -1000;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css("ul"))).toBeNull();
+    expect(ulElement).toBeNull();
   });
 
   it("should show ul element if consumption is not null", () => {
