@@ -20,22 +20,27 @@ export class ProductsComponent implements OnChanges {
   }
 
   private loadProducts(): void {
-    this.productService.getProducts().subscribe(
-      products => {
-        this.productCollection = [];
+    this.productCollection = [];
 
-        for (let product of products) {
-          const annualCosts = calculateAnnualCosts(this.consumption, product);
-          const productModel = new ProductViewModel(product.name, annualCosts);
+    if (this.consumption) {
+      this.productService.getProducts().subscribe(
+        products => {
+          for (let product of products) {
+            const annualCosts = calculateAnnualCosts(this.consumption, product);
+            const productModel = new ProductViewModel(
+              product.name,
+              annualCosts
+            );
 
-          this.productCollection.push(productModel);
-        }
+            this.productCollection.push(productModel);
+          }
 
-        this.productCollection.sort((a, b) =>
-          a.annualCosts > b.annualCosts ? 1 : -1
-        );
-      },
-      error => console.log(error)
-    );
+          this.productCollection.sort((a, b) =>
+            a.annualCosts > b.annualCosts ? 1 : -1
+          );
+        },
+        error => console.log(error)
+      );
+    }
   }
 }
