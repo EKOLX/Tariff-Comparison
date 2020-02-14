@@ -4,10 +4,12 @@
   <div class="inputWrapper">
     <label for="consumption">Consumption</label>
     <input
+      #consumptionField="ngModel"
       type="number"
       id="consumption"
       [(ngModel)]="consumption"
       placeholder="Add value to see a result"
+      min="1"
     />
     <span>(kWh/year)</span>
   </div>
