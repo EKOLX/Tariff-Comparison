@@ -1,0 +1,23 @@
+ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  width: 400px;
+}
+
+li {
+  margin: 5px;
+  height: 25px;
+
+  .align-left {
+    float: left;
+  }
+  .align-right {
+    float: right;
+  }
+}
+
+li.header span {
+  font-weight: bold;
+}

@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "name": "basic electricity tariff",
+      "name": "Basic electricity tariff",
       "baseCost": 5,
       "consumptionCost": 0.22,
       "calculationId": 1

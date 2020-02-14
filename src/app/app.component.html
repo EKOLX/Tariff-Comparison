@@ -1,5 +1,11 @@
-<label for="consumption">Consumption:</label>
-<input type="number" name="consumption" [(ngModel)]="consumption" />
-<span>(kWh/year)</span>
+<div class="container">
+  <h1>Tariff Comparison</h1>
 
-<app-products [consumption]="consumption"></app-products>
+  <div class="inputWrapper">
+    <label for="consumption">Consumption</label>
+    <input type="number" id="consumption" [(ngModel)]="consumption" />
+    <span>(kWh/year)</span>
+  </div>
+
+  <app-products [consumption]="consumption"></app-products>
+</div>

@@ -1,10 +1,10 @@
 <ul>
-  <li>
-    <span>Tariff name</span>
-    <span>Annual costs (€/year)</span>
+  <li class="header">
+    <span class="align-left">Tariff name</span>
+    <span class="align-right ">Annual costs (€/year)</span>
   </li>
   <li *ngFor="let product of productCollection">
-    <span>{{ product.name }}</span>
-    <span>{{ product.annualCosts | number: "1.2" }}</span>
+    <span class="align-left">{{ product.name }}</span>
+    <span class="align-right ">{{ product.annualCosts | number: "1.2" }}</span>
   </li>
 </ul>
